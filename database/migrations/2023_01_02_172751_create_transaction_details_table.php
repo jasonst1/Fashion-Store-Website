@@ -14,8 +14,8 @@ class CreateTransactionDetailsTable extends Migration
     public function up()
     {
         Schema::create('transaction_details', function (Blueprint $table) {
-            $table->string('TransactionID')->references('TransactionID')->on('transactions');
-            $table->string('ProductID')->references('ProductID')->on('products');
+            $table->foreign('TransactionID')->references('TransactionID')->on('transaction_headers');
+            $table->foreign('ProductID')->references('ProductID')->on('products');
             $table->integer('ProductQty');
             $table->integer('TransactionPrice');
             $table->primary(['TransactionID', 'ProductID']);

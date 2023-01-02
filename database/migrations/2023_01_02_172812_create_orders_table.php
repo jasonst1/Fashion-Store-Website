@@ -14,7 +14,7 @@ class CreateOrdersTable extends Migration
     public function up()
     {
         Schema::create('orders', function (Blueprint $table) {
-            $table->string('TransactionID')->references('TransactionID')->on('transactions');
+            $table->foreign('TransactionID')->references('TransactionID')->on('transaction_headers');
             $table->string('Courier');
             $table->string('Status');
             $table->primary(['TransactionID']);
