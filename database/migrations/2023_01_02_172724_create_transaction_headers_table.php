@@ -14,7 +14,7 @@ class CreateTransactionHeadersTable extends Migration
     public function up()
     {
         Schema::create('transaction_headers', function (Blueprint $table) {
-            $table->foreign('TransactionID')->references('TransactionID')->on('transaction_headers');
+            $table->string('TransactionID');
             $table->foreign('UserID')->references('UserID')->on('users');
             $table->date('TransactionDate');
             $table->primary(['TransactionID', 'UserID']);
