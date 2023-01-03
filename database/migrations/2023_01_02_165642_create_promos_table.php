@@ -14,11 +14,11 @@ class CreatePromosTable extends Migration
     public function up()
     {
         Schema::create('promos', function (Blueprint $table) {
-            $table->string('promoID');
-            $table->string('promoCode');
-            $table->float('discountAmount');
+            $table->string('PromoID');
+            $table->string('PromoCode');
+            $table->float('DiscountAmount');
             $table->timestamps();
-            $table->primary(['promoID']);
+            $table->primary(['PromoID']);
         });
     }
 

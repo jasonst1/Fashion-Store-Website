@@ -18,14 +18,14 @@ class CreateProductsTable extends Migration
             $table->string('ProductName');
             $table->string('ProductSlug')->unique();
             $table->string('ProductSummary');
-            $table->string('ProductCategory');
+            $table->string('CategoryID');
             $table->integer('ProductPrice');
             $table->integer('ProductQuantity');
             $table->integer('ProductDiscount');
             $table->timestamps();
             $table->timestamp('PublishedAt')->useCurrent()->useCurrentOnUpdate();
             $table->primary(['ProductID']);
-            $table->foreign('productCategory')->references('categoryID')->on('categories')->onDelete('cascade');
+            $table->foreign('CategoryID')->references('CategoryID')->on('categories');
         });
     }
 
