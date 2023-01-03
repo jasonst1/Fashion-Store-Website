@@ -15,6 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [HomeController::class, 'index']);
+// Route::get('/', [HomeController::class, 'index']);
 
 Route::get('/catalog/{products:CategoryID}', [CatalogController::class, 'index']);
+Route::get('/', function () {
+    return view('/components/home');
+});
