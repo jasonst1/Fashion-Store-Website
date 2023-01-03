@@ -14,7 +14,7 @@ class CreateReviewPhotosTable extends Migration
     public function up()
     {
         Schema::create('review_photos', function (Blueprint $table) {
-            $table->foreign('ReviewID')->references('ReviewID')->on('reviews');
+            $table->string('ReviewID');
             $table->string('PhotoID');
             $table->string('Photo');
             $table->primary(['ReviewID', 'PhotoID']);

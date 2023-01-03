@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateWishlistsTable extends Migration
+class CreateCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateWishlistsTable extends Migration
      */
     public function up()
     {
-        Schema::create('wishlists', function (Blueprint $table) {
-            $table->string('UserID');
-            $table->string('ProductID');
-            $table->primary(['UserID', 'ProductID']);
+        Schema::create('categories', function (Blueprint $table) {
+            $table->string('CategoryID');
+            $table->string('CategoryName');
             $table->timestamps();
+            $table->primary(['CategoryID']);
         });
     }
 
@@ -28,6 +28,6 @@ class CreateWishlistsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('wishlists');
+        Schema::dropIfExists('categories');
     }
 }
