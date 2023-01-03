@@ -14,8 +14,8 @@ class CreateShoppingCartsTable extends Migration
     public function up()
     {
         Schema::create('shopping_carts', function (Blueprint $table) {
-            $table->string('UserID');
-            $table->string('ProductID');
+            $table->foreign('UserID')->references('UserID')->on('users');
+            $table->foreign('ProductID')->references('ProductID')->on('products');
             $table->primary(['UserID', 'ProductID']);
             $table->timestamps();
         });
