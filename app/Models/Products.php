@@ -10,10 +10,13 @@ class Products extends Model
     use HasFactory;
     public $incrementing = false;
 
-    protected $guarded = ['ProductID'];
-
-    public function categories()
+    public function Categories()
     {
-        return $this->belongsTo(Categories::class);
+        return $this->belongsTo(Categories::class, 'CategoryID', 'CategoryID');
+    }
+
+    public function Wishlist()
+    {
+        return $this->hasMany(Wishlist::class, 'ProductID', 'ProductID');
     }
 }

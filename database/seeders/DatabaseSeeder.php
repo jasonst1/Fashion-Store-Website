@@ -2,8 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Categories;
+use App\Models\User;
 use App\Models\Products;
+use App\Models\Categories;
+use App\Models\Wishlist;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -27,6 +29,10 @@ class DatabaseSeeder extends Seeder
             'CategoryName' => 'men'
         ]);
 
-        Products::factory(5)->create();
+        Products::factory(20)->create();
+
+        User::factory(10)->create();
+
+        Wishlist::factory(2)->create();
     }
 }

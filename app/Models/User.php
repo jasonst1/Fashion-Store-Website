@@ -44,4 +44,9 @@ class User extends Authenticatable
     ];
 
     public $incrementing = false;
+
+    public function Wishlist()
+    {
+        return $this->hasMany(Wishlist::class, 'UserID', 'UserID');
+    }
 }

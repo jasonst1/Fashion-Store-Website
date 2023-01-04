@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\WishlistController;
+use App\Models\Wishlist;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,6 +22,10 @@ Route::get('/', [HomeController::class, 'index']);
 Route::get('/catalog', [CatalogController::class, 'index']);
 
 Route::get('/catalog/{CategoryName}', [Catalogcontroller::class, 'category']);
+
+Route::get('/catalog/show/{product:ProductSlug}', [CatalogController::class, 'show']);
+
+Route::get('/wishlist', [WishlistController::class, 'index']);
 
 
 

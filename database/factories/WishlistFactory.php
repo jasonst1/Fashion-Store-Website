@@ -14,7 +14,8 @@ class WishlistFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'UserID' => $this->faker->numberBetween(1, 5),
+            'ProductID' => $this->faker->numberBetween(1, 5)
         ];
     }
 }
