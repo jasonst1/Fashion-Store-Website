@@ -9,5 +9,11 @@ class Products extends Model
 {
     use HasFactory;
     public $incrementing = false;
-    public $primarykey = ['productID'];
+
+    protected $guarded = ['ProductID'];
+
+    public function categories()
+    {
+        return $this->belongsTo(Categories::class);
+    }
 }

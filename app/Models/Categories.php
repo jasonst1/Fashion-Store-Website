@@ -10,4 +10,9 @@ class Categories extends Model
     use HasFactory;
 
     public $incrementing = false;
+
+    public function products()
+    {
+        return $this->hasMany(Products::class);
+    }
 }

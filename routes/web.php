@@ -15,9 +15,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index']);
 
-Route::get('/catalog/{products:CategoryID}', [CatalogController::class, 'index']);
-Route::get('/', function () {
-    return view('home.index');
-});
+Route::get('/catalog', [CatalogController::class, 'index']);
+
+Route::get('/catalog/{CategoryName}', [Catalogcontroller::class, 'category']);
+
+
+
+// Route::get('/', function () {
+//     return view('home.index');
+// });
