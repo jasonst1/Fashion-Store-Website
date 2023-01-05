@@ -15,12 +15,12 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
-            'UserID' => $this->faker->unique()->uuid(),
-            'Username' => $this->faker->name(),
+            'id' => $this->faker->unique()->uuid(),
+            'username' => $this->faker->name(),
             'Type' => false,
             'DOB' => $this->faker->date(),
             'Gender' => 'male',
-            'Email' => $this->faker->unique()->safeEmail(),
+            'email' => $this->faker->unique()->safeEmail(),
             'PhoneNumber' => $this->faker->phoneNumber(),
             'FirstName' => $this->faker->name(),
             'LastName' => $this->faker->name(),

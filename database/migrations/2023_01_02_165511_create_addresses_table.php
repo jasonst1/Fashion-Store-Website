@@ -22,7 +22,7 @@ class CreateAddressesTable extends Migration
             $table->string('Zipcode');
             $table->timestamps();
             $table->primary(['UserID', 'Address']);
-            $table->foreign('UserID')->references('UserID')->on('users');
+            $table->foreign('UserID')->references('id')->on('users');
         });
     }
 
