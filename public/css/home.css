@@ -1,0 +1,57 @@
+body{
+  font-family: 'Times New Roman', Times, serif !important;
+  background-color: #f7f7f2 !important;
+}
+
+.navbar{
+  background-color: #f7f7f2;
+}
+
+.heading{
+  font-size: 1.5em;
+}
+
+.navbar a{
+  color:black;
+}
+
+footer div{
+  color:black;
+}
+
+section a{
+  color:black;
+}
+
+.carousel-inner img{
+  width: auto;
+  height: 400px;
+  max-height: 500px;
+}
+
+.productCard{
+  box-shadow: 5px 10px grey;
+  border-radius: 1em;
+  background-color: whitesmoke;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 1em;
+}
+
+.productCard img{
+  width: auto;
+  height: 250px;
+}
+
+.productCardCat{
+  font-weight: bold;
+  border-radius: 1em;
+  background-color: whitesmoke;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 1em;
+}
+
+.productCardCat img{
+  border-radius: 1em;
+  width: auto;
+  height: 250px;
+}
