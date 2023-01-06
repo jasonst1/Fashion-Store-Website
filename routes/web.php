@@ -19,7 +19,7 @@ use App\Http\Controllers\WishlistController;
 |
 */
 
-Route::get('/home', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index']);
 
 //catalog + detail
 Route::get('/catalog', [CatalogController::class, 'index']);
@@ -40,6 +40,9 @@ Route::post('/register', [RegisterController::class, 'store']);
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 
 Route::post('/login', [LoginController::class, 'authenticate']);
+
+// logout
+Route::post('/logout', [LoginController::class, 'logout']);
 
 
 
