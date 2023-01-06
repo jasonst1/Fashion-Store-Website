@@ -9,5 +9,14 @@ class Products extends Model
 {
     use HasFactory;
     public $incrementing = false;
-    public $primarykey = ['productID'];
+
+    public function Categories()
+    {
+        return $this->belongsTo(Categories::class, 'CategoryID', 'CategoryID');
+    }
+
+    public function Wishlist()
+    {
+        return $this->hasMany(Wishlist::class, 'ProductID', 'ProductID');
+    }
 }

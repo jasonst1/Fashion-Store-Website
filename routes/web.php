@@ -1,8 +1,12 @@
 <?php
 
-use App\Http\Controllers\CatalogController;
-use App\Http\Controllers\HomeController;
+use App\Models\Wishlist;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\CatalogController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\WishlistController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,5 +28,33 @@ Route::get('/details', function () {
 });
 
 // Route::get('/', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index']);
 
-Route::get('/catalog/{products:CategoryID}', [CatalogController::class, 'index']);
+//catalog + detail
+Route::get('/catalog', [CatalogController::class, 'index']);
+
+Route::get('/catalog/{CategoryName}', [Catalogcontroller::class, 'category']);
+
+Route::get('/catalog/show/{product:ProductSlug}', [CatalogController::class, 'show']);
+
+// wishlist
+Route::get('/wishlist', [WishlistController::class, 'index']);
+
+// register
+Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
+
+Route::post('/register', [RegisterController::class, 'store']);
+
+// login
+Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
+
+Route::post('/login', [LoginController::class, 'authenticate']);
+
+// logout
+Route::post('/logout', [LoginController::class, 'logout']);
+
+
+
+// Route::get('/', function () {
+//     return view('home.index');
+// });
