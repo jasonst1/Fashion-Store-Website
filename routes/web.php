@@ -18,6 +18,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('/home/home');
 });
+
+Route::get('/details', function () {
+    return view('/detail/detail');
+});
+
 // Route::get('/', [HomeController::class, 'index']);
 
 Route::get('/catalog/{products:CategoryID}', [CatalogController::class, 'index']);

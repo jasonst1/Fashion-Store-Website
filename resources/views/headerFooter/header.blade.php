@@ -1,5 +1,5 @@
 <nav class="navbar navbar-custom navbar-expand-lg">
-    <a class="navbar-brand" href="#"><img src="https://i.pinimg.com/originals/f9/2a/d3/f92ad3f3434f7a20ca931285c2df9906.png" width="100" height="100"></a>
+    <a class="navbar-brand" href="/"><img src="https://i.pinimg.com/originals/f9/2a/d3/f92ad3f3434f7a20ca931285c2df9906.png" width="100" height="100"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -48,6 +48,13 @@
                 <input type="text" class="input" name="txt" onmouseout="this.value = ''; this.blur();">
             </form>
             <i class="bi bi-search"></i>
+        </div>
+        <div class="ml-2">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="bi bi-basket"></i></a>
+                </li>
+            </ul>
         </div>
     </div>
     </nav>

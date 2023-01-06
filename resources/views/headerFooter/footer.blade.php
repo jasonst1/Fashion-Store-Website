@@ -2,17 +2,6 @@
 <footer class="text-center text-white">
   <!-- Grid container -->
   <div class="container p-4">
-    <!-- Section: Social media -->
-    <section class="mb-4">
-      <!-- Instagram -->
-      <a class="btn btn-outline-dark btn-floating m-1" href="https://www.instagram.com/maisonmargiela/?hl=id" role="button"
-        ><i class="bi bi-instagram"></i></i></a>
-      <!-- Twitter -->
-      <a class="btn btn-outline-dark btn-floating m-1" href="https://twitter.com/margiela" role="button"
-        ><i class="bi bi-twitter"></i></i></a>
-    </section>
-    <!-- Section: Social media -->
-
     <!-- Section: Form -->
     <section class="mb-5">
       <form action="">
@@ -107,6 +96,16 @@
     </section>
     <!-- Section: Text -->
     <!-- Section: Links -->
+    <!-- Section: Social media -->
+    <section class="mb-4">
+      <!-- Instagram -->
+      <a class="btn btn-outline-dark btn-floating m-1" href="https://www.instagram.com/maisonmargiela/?hl=id" role="button"
+        ><i class="bi bi-instagram"></i></i></a>
+      <!-- Twitter -->
+      <a class="btn btn-outline-dark btn-floating m-1" href="https://twitter.com/margiela" role="button"
+        ><i class="bi bi-twitter"></i></i></a>
+    </section>
+    <!-- Section: Social media -->
   </div>
   <!-- Grid container -->
 </footer>
