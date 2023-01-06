@@ -55,7 +55,7 @@
       <div>
         Crafted from the finest satin sourced from Italy, this dress is the epitome of beauty.
       </div>
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Discover More</button>
+      <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Discover More</button>
     </div>
   </div>
   <div class="productCard mt-3 mb-3 col-6 d-flex align-items-center justify-content-between">
@@ -70,7 +70,7 @@
       <div>
       Recicla pieces carry a new Recicla label denoting its limited edition, provenance and period.
       </div>
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Discover More</button>
+      <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Discover More</button>
     </div>
   </div>
   <div class="productCard mt-3 mb-3 col-6 d-flex align-items-center justify-content-between">
@@ -85,7 +85,7 @@
       <div>
         It captures the avant-garde and insubordinate spirit of the Maison and exists as a heritage classic, continually explored through each collection.
       </div>
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Discover More</button>
+      <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Discover More</button>
     </div>
   </div>
 </div>
