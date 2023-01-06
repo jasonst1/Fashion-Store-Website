@@ -1,5 +1,4 @@
 body{
-  font-family: 'Times New Roman', Times, serif !important;
   background-color: #f7f7f2 !important;
 }
 
@@ -33,7 +32,6 @@ section a{
   box-shadow: 5px 10px grey;
   border-radius: 1em;
   background-color: whitesmoke;
-  font-family: 'Times New Roman', Times, serif;
   font-size: 1em;
 }
 
@@ -46,7 +44,6 @@ section a{
   font-weight: bold;
   border-radius: 1em;
   background-color: whitesmoke;
-  font-family: 'Times New Roman', Times, serif;
   font-size: 1em;
 }
 
