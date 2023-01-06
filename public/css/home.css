@@ -68,7 +68,7 @@ section a{
   border: 4px solid #f7f7f2;
   border-radius: 50px;
   box-sizing: border-box;
-  font-size: 26px;
+  font-size: 20px;
   color: black;
   outline: none;
   transition: .5s;
@@ -84,7 +84,7 @@ section a{
   top: 40%;
   right: 0.001%;
   transform: translate(-50%,-50%);
-  font-size: 26px;
+  font-size: 20px;
   color: black;
   transition: .2s;
 }
