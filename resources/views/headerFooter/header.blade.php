@@ -43,9 +43,11 @@
           <a class="nav-link" href="#">Account</a>
         </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-dark ml-2" type="submit">Search</button>
-        </form>
+        <div class="box">
+            <form name="search">
+                <input type="text" class="input" name="txt" onmouseout="this.value = ''; this.blur();">
+            </form>
+            <i class="bi bi-search"></i>
+        </div>
     </div>
     </nav>
