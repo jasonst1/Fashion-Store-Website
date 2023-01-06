@@ -17,7 +17,7 @@
                                         <div class="d-flex flex-row align-items-center mb-4">
                                             <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                                             <div class="form-outline flex-fill mb-0">
-                                                <input type="text" id="Username" class="form-control" name="username">
+                                                <input type="text" id="Username" class="form-control" name="Username">
                                                 <label class="form-label" for="Username">Your Name</label>
                                                 @error('Username')
                                                     {{ $message }}
@@ -28,7 +28,7 @@
                                         <div class="d-flex flex-row align-items-center mb-4">
                                             <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                                             <div class="form-outline flex-fill mb-0">
-                                                <input type="email" id="Email" class="form-control" name="email">
+                                                <input type="email" id="Email" class="form-control" name="Email">
                                                 <label class="form-label" for="Email">Your Email</label>
                                                 @error('Email')
                                                     {{ $message }}
@@ -39,7 +39,7 @@
                                         <div class="d-flex flex-row align-items-center mb-4">
                                             <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                                             <div class="form-outline flex-fill mb-0">
-                                                <input type="password" id="Password" class="form-control" name="password">
+                                                <input type="password" id="Password" class="form-control" name="Password">
                                                 <label class="form-label" for="Password">Password</label>
                                                 @error('Password')
                                                     {{ $message }}

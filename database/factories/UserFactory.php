@@ -16,7 +16,7 @@ class UserFactory extends Factory
     {
         return [
             'id' => $this->faker->unique()->uuid(),
-            'username' => $this->faker->name(),
+            'Username' => $this->faker->name(),
             'Type' => false,
             'DOB' => $this->faker->date(),
             'Gender' => 'male',

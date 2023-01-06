@@ -19,7 +19,7 @@ use App\Http\Controllers\WishlistController;
 |
 */
 
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index'])->middleware('auth');
 
 //catalog + detail
 Route::get('/catalog', [CatalogController::class, 'index']);

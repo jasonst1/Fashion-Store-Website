@@ -24,9 +24,9 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'id',
-        'username',
-        'email',
-        'password',
+        'Username',
+        'Email',
+        'Password',
     ];
     // field mana aja yang boleh diisi
     // sisanya diisi otomatis
