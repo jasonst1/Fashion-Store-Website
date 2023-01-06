@@ -49,7 +49,7 @@
             </form>
             <i class="bi bi-search"></i>
         </div>
-        <div class="ml-2">
+        <div class="ml-2 shopCart">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="#"><i class="bi bi-basket"></i></a>
