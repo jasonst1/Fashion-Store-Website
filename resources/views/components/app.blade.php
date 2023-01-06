@@ -6,9 +6,9 @@
     </head>
     <body>
         <div class="container">
-            @yield('header')
+            @include('headerFooter/header')
             @yield('content')
-            @yield('footer')
+            @include('headerFooter/footer')
             @yield('js')
         </div>
     </body>
