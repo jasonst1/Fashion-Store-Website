@@ -25,36 +25,39 @@
             </ul>
         </div>
         <div class="card-body">
-            <form method="/account/index" method="POST" enctype="multipart/form-data">
+            <form action="/account" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
-                    <label for="exampleFormControlInput1">Email address</label>
-                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                    <label for="Email">Email address</label>
+                    <input type="email" class="form-control" id="Email" placeholder="name@example.com" name="Email">
                 </div>
                 <div class="form-group">
-                    <label for="exampleFormControlSelect1">Example select</label>
-                    <select class="form-control" id="exampleFormControlSelect1">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
+                    <label for="DOB">DOB</label>
+                    <input type="date" class="form-control" id="DOB" placeholder="" name="DOB">
+                </div>
+                <div class="form-group">
+                    <label for="Gender">Gender</label>
+                    <select class="form-control" id="Gender" name="Gender">
+                        <option>null</option>
+                        <option>male</option>
+                        <option>female</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="exampleFormControlSelect2">Example multiple select</label>
-                    <select multiple class="form-control" id="exampleFormControlSelect2">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                    </select>
+                    <label for="PhoneNumber">Phone number</label>
+                    <input type="tel" class="form-control" id="PhoneNumber" placeholder="" name="PhoneNumber">
                 </div>
-                <div class="form-group">
-                    <label for="exampleFormControlTextarea1">Example textarea</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <div class="row">
+                    <div class="col">
+                        <label for="First Name">First name</label>
+                        <input type="text" class="form-control" id="FirstName" placeholder="" name="FirstName">
+                    </div>
+                    <div class="col">
+                        <label for="LastName">Last name</label>
+                        <input type="text" class="form-control" id="LastName" placeholder="" name="LastName">
+                    </div>
                 </div>
+                <button type="submit" class="btn btn-success btn-lg btn-block my-5">Save</button>
             </form>
         </div>
     </div>

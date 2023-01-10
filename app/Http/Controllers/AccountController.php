@@ -57,9 +57,7 @@ class AccountController extends Controller
      */
     public function edit(User $user)
     {
-        return view('account.index', [
-            'user' => $user
-        ]);
+        //
     }
 
     /**
@@ -71,7 +69,24 @@ class AccountController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $id = auth()->user()->id;
+
+        $rules = [];
+
+        if ($request['DOB']) {
+            $rules['DOB'] = 'date';
+        }
+
+        $validatedData = $request->validate($rules);
+
+        $validatedData['Gender'] = request('Gender');
+        $validatedData['PhoneNumber'] = request('PhoneNumber');
+        $validatedData['FirstName'] = request('FirstName');
+        $validatedData['LastName'] = request('LastName');
+
+        $affected = User::where('id', $id)->update($validatedData);
+
+        return $affected;
     }
 
     /**

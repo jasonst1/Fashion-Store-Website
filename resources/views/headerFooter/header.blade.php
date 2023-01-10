@@ -16,13 +16,19 @@
                 <a class="nav-link" href="/wishlist">Wishlist</a>
             </li>
             <li class="nav-item mx-3">
-                <a class="nav-link" href="/wishlist">Shopping Cart</a>
+                <a class="nav-link" href="/shoppingCart">Shopping Cart</a>
             </li>
             <li class="nav-item mx-3">
-                <a class="nav-link" href="/account/{{ auth()->user()->id }}/edit">Account</a>
+                <a class="nav-link" href="/account">Account</a>
             </li>
             <li class="nav-item mx-3">
                 <a class="nav-link" href="#">About Us</a>
+            </li>
+            <li class="nav-item mx-3">
+                <form class="form-inline my-2 my-lg-0" action="/logout" method="POST">
+                    @csrf
+                    <button class="nav-link" type="submit" style="border: none; background: none;">Logout</button>
+                </form>
             </li>
         </ul>
         <div class="box">

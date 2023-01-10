@@ -45,7 +45,14 @@ Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
 // account (resource)
-Route::resource('/account', AccountController::class);
+Route::get('/account', [AccountController::class, 'index']);
+
+Route::post('/account', [AccountController::class, 'update']);
+
+// shopping cart
+Route::get('/shoppingCart', function () {
+    return view('shoppingCart.index');
+});
 
 
 
