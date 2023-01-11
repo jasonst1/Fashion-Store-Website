@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Session\Store;
+use Illuminate\Support\Facades\Storage;
 
 class AccountController extends Controller
 {
@@ -71,22 +73,27 @@ class AccountController extends Controller
     {
         $id = auth()->user()->id;
 
-        $rules = [];
-
-        if ($request['DOB']) {
-            $rules['DOB'] = 'date';
-        }
+        $rules = [
+            'DOB' => 'date',
+            'Gender' => 'String',
+            'PhoneNumber' => 'String',
+            'FirstName' => 'String',
+            'LastName' => 'String',
+            'ProfileImage' => 'image|file|max:1024'
+        ];
 
         $validatedData = $request->validate($rules);
 
-        $validatedData['Gender'] = request('Gender');
-        $validatedData['PhoneNumber'] = request('PhoneNumber');
-        $validatedData['FirstName'] = request('FirstName');
-        $validatedData['LastName'] = request('LastName');
+        if ($request->file('ProfileImage')) {
+            if ($request->OldImage) {
+                Storage::delete($request->OldImage);
+            }
+            $validatedData['ProfileImage'] = $request->file('ProfileImage')->store('profile_image');
+        }
 
         $affected = User::where('id', $id)->update($validatedData);
 
-        return $affected;
+        return redirect('/')->with('success', 'profile has been updated');
     }
 
     /**
@@ -97,6 +104,15 @@ class AccountController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        $id = auth()->user()->id;
+        $user = User::where('id', $id)->get()[0];
+
+        if ($user->ProfileImage) {
+            Storage::delete($user->ProfileImage);
+        }
+
+        User::destroy($user->id);
+
+        return redirect('/');
     }
 }

@@ -17,7 +17,7 @@ class CreateUsersTable extends Migration
             $table->string('id');
             $table->string('Username');
             $table->boolean('Type')->nullable();
-            $table->dateTime('DOB')->nullable();
+            $table->date('DOB')->nullable();
             $table->string('Gender')->nullable();
             $table->string('Email')->unique();
             $table->timestamp('RegisteredAt');

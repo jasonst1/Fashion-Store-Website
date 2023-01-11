@@ -49,6 +49,8 @@ Route::get('/account', [AccountController::class, 'index']);
 
 Route::post('/account', [AccountController::class, 'update']);
 
+Route::get('/account/delete', [AccountController::class, 'destroy']);
+
 // shopping cart
 Route::get('/shoppingCart', function () {
     return view('shoppingCart.index');
