@@ -74,12 +74,12 @@ class AccountController extends Controller
         $id = auth()->user()->id;
 
         $rules = [
-            'DOB' => 'date',
-            'Gender' => 'String',
-            'PhoneNumber' => 'String',
-            'FirstName' => 'String',
-            'LastName' => 'String',
-            'ProfileImage' => 'image|file|max:1024'
+            'DOB' => 'date|nullable',
+            'Gender' => 'String|nullable',
+            'PhoneNumber' => 'String|nullable',
+            'FirstName' => 'String|nullable',
+            'LastName' => 'String|nullable',
+            'ProfileImage' => 'image|file|max:1024|nullable'
         ];
 
         $validatedData = $request->validate($rules);

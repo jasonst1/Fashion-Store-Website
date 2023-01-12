@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\AddressController;
 use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\WishlistController;
@@ -51,12 +52,13 @@ Route::post('/account', [AccountController::class, 'update']);
 
 Route::get('/account/delete', [AccountController::class, 'destroy']);
 
+// address (resource)
+Route::resource('/account/address', [AddressController::class]);
+
 // shopping cart
 Route::get('/shoppingCart', function () {
     return view('shoppingCart.index');
 });
-
-
 
 // Route::get('/', function () {
 //     return view('home.index');
