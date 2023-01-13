@@ -53,7 +53,7 @@ Route::post('/account', [AccountController::class, 'update']);
 Route::get('/account/delete', [AccountController::class, 'destroy']);
 
 // address (resource)
-Route::resource('/account/address', [AddressController::class]);
+Route::resource('/account/address', AddressController::class);
 
 // shopping cart
 Route::get('/shoppingCart', function () {
