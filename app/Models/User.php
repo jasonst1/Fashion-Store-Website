@@ -54,4 +54,9 @@ class User extends Authenticatable
     {
         return $this->Password;
     }
+
+    public function Address()
+    {
+        return $this->hasMany(Address::class, 'UserID');
+    }
 }

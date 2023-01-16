@@ -12,21 +12,9 @@
 @yield('css')
 
 @section('content')
-    <div class="card">
-        <div class="card-header">
-            <ul class="nav nav-tabs card-header-tabs">
-                <li class="nav-item">
-                    <a class="nav-link active" href="/account">Biodata</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/account/address">Address</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="/payment">Payment</a>
-                </li>
-            </ul>
-        </div>
-    </div>
+    @if (Request::is('account', 'account/address', 'account/payment'))
+        @include('account.layout.header')
+    @endif
     @yield('container')
 @endsection
 
