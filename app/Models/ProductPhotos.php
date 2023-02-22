@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class ProductPhotos extends Model
 {
     use HasFactory;
+
+    public $incrementing = false;
 }

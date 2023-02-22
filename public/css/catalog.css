@@ -1,0 +1,24 @@
+a {
+    text-decoration: none !important;
+    color: black !important;
+}
+
+.card-body {
+    background-color: FBF1D3;
+}
+
+.card-body div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cardbody i:hover,
+.card-body i:active {
+    color: red;
+}
+
+.col {
+    display: flex;
+    justify-content: center;
+}

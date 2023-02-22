@@ -14,7 +14,14 @@ class ProductsFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'ProductID' => $this->faker->unique()->uuid(),
+            'ProductName' => $this->faker->word(),
+            'ProductSlug' => $this->faker->slug(),
+            'ProductSummary' => $this->faker->sentence(mt_rand(1, 5)),
+            'CategoryID' => $this->faker->numberBetween(1, 2),
+            'ProductPrice' => $this->faker->numberBetween(10000, 1000000),
+            'ProductQuantity' => $this->faker->numberBetween(10, 100),
+            'ProductDiscount' => $this->faker->numberBetween(30, 50),
         ];
     }
 }

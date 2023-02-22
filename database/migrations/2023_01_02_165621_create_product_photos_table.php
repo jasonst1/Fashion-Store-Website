@@ -13,10 +13,11 @@ class CreateProductPhotosTable extends Migration
      */
     public function up()
     {
-        Schema::create('product_photos', function (Blueprint $table) {
-            $table->primary('id');
-            $table->foreignId('productID')->references('products')->on('id');
-            $table->string('image');
+        Schema::create('Product_photos', function (Blueprint $table) {
+            $table->string('ProductID');
+            $table->string('Image');
+            $table->primary(['ProductID', 'Image']);
+            $table->foreign('ProductID')->references('ProductID')->on('products')->onDelete('cascade');
             $table->timestamps();
         });
     }

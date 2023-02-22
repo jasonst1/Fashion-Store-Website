@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Address extends Model
 {
     use HasFactory;
+
+    public $incrementing = false;
+
+    protected $guarded = [''];
+
+    public function User()
+    {
+        return $this->belongsTo(User::class, 'UserID');
+    }
 }

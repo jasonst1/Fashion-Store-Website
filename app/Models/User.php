@@ -7,10 +7,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Haruncpi\LaravelIdGenerator\IdGenerator;
 
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
+
+    protected $table = 'users';
+
+    public $incrementing = false;
 
     /**
      * The attributes that are mass assignable.
@@ -18,10 +23,13 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'email',
-        'password',
+        'id',
+        'Username',
+        'Email',
+        'Password',
     ];
+    // field mana aja yang boleh diisi
+    // sisanya diisi otomatis
 
     /**
      * The attributes that should be hidden for serialization.
@@ -41,4 +49,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getAuthPassword()
+    {
+        return $this->Password;
+    }
+
+    public function Address()
+    {
+        return $this->hasMany(Address::class, 'UserID');
+    }
 }

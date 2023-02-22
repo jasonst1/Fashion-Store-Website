@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Address;
 use App\Http\Requests\StoreAddressRequest;
 use App\Http\Requests\UpdateAddressRequest;
@@ -13,9 +14,19 @@ class AddressController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    // protected static $id = auth()->user()->id;
+    // protected static $user = User::where('id', $id)->get();
+
     public function index()
     {
-        //
+        $id = auth()->user()->id;
+
+        // return Address::where('UserID', $id)->get();
+
+        return view('account.address.index', [
+            'address' => Address::where('UserID', $id)->with('user')->get()
+        ]);
     }
 
     /**
@@ -25,7 +36,7 @@ class AddressController extends Controller
      */
     public function create()
     {
-        //
+        return view('account.address.create');
     }
 
     /**
@@ -36,7 +47,23 @@ class AddressController extends Controller
      */
     public function store(StoreAddressRequest $request)
     {
-        //
+        $id = auth()->user()->id;
+
+        $rule = [
+            'Address' => 'required|string|starts_with:Jl. ',
+            'Country' => 'required|string',
+            'Province' => 'required|string',
+            'City' => 'required|string',
+            'Zipcode' => 'required|string|size:5'
+        ];
+
+        $validatedData = $request->validate($rule);
+
+        $validatedData['UserID'] = $id;
+
+        Address::create($validatedData);
+
+        return redirect('/account/address')->with('success', 'new address has been created');
     }
 
     /**
