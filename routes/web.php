@@ -8,6 +8,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\CatalogController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\WishlistController;
 
@@ -58,6 +59,10 @@ Route::resource('/account/address', AddressController::class);
 
 // map
 Route::get('/account/map', [MapController::class, 'index']);
+
+// payment
+Route::resource('/account/payment', PaymentController::class);
+Route::post('/account/payment/delete', [PaymentController::class, 'destroy']);
 
 // shopping cart
 Route::get('/shoppingCart', function () {

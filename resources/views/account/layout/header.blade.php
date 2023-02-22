@@ -9,7 +9,8 @@
                     href="/account/address">Address</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ Request::is('account/payment') ? 'active' : '' }}" href="/payment">Payment</a>
+                <a class="nav-link {{ Request::is('account/payment') ? 'active' : '' }}"
+                    href="/account/payment">Payment</a>
             </li>
         </ul>
     </div>

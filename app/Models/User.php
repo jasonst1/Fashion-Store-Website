@@ -22,6 +22,8 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+
+    //id seharusnya guarded ?
     protected $fillable = [
         'id',
         'Username',
@@ -58,5 +60,10 @@ class User extends Authenticatable
     public function Address()
     {
         return $this->hasMany(Address::class, 'UserID');
+    }
+
+    public function Payment()
+    {
+        return $this->hasMany(Payment::class, 'UserID');
     }
 }
