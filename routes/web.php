@@ -2,6 +2,7 @@
 
 use App\Models\Wishlist;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MapController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AccountController;
@@ -54,6 +55,9 @@ Route::get('/account/delete', [AccountController::class, 'destroy']);
 
 // address (resource)
 Route::resource('/account/address', AddressController::class);
+
+// map
+Route::get('/account/map', [MapController::class, 'index']);
 
 // shopping cart
 Route::get('/shoppingCart', function () {

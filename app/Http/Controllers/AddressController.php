@@ -15,8 +15,8 @@ class AddressController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    // protected static $id = auth()->user()->id;
-    // protected static $user = User::where('id', $id)->get();
+    // private static $id = auth()->user()->id;
+    // private static $user = User::where('id', $id)->get();
 
     public function index()
     {
@@ -83,9 +83,15 @@ class AddressController extends Controller
      * @param  \App\Models\Address  $address
      * @return \Illuminate\Http\Response
      */
-    public function edit(Address $address)
+    public function edit(String $address)
     {
-        //
+        $id = auth()->user()->id;
+
+        $oldAddress = Address::where('UserID', $id)->where('Address', $address)->get();
+
+        return view('account.address.update', [
+            'address' => $oldAddress
+        ]);
     }
 
     /**
@@ -97,7 +103,23 @@ class AddressController extends Controller
      */
     public function update(UpdateAddressRequest $request, Address $address)
     {
-        //
+        $id = auth()->user()->id;
+
+        $rule = [
+            'Address' => 'required|string|starts_with:Jl. ',
+            'Country' => 'required|string',
+            'Province' => 'required|string',
+            'City' => 'required|string',
+            'Zipcode' => 'required|string|size:5'
+        ];
+
+        $validatedData = $request->validate($rule);
+
+        $validatedData['UserID'] = $id;
+
+        Address::where('UserID', $id)->where('Address', $address->Address)->update($validatedData);
+
+        return redirect('/account/address')->with('success', 'address has been updated');
     }
 
     /**
@@ -106,8 +128,12 @@ class AddressController extends Controller
      * @param  \App\Models\Address  $address
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Address $address)
+    public function destroy(string $address)
     {
-        //
+        $id = auth()->user()->id;
+
+        Address::where('UserID', $id)->where('Address', $address)->delete();
+
+        return redirect('/account/address')->with('success', 'address has been deleted');
     }
 }

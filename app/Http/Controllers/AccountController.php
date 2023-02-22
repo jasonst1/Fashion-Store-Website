@@ -91,9 +91,9 @@ class AccountController extends Controller
             $validatedData['ProfileImage'] = $request->file('ProfileImage')->store('profile_image');
         }
 
-        $affected = User::where('id', $id)->update($validatedData);
+        User::where('id', $id)->update($validatedData);
 
-        return redirect('/')->with('success', 'profile has been updated');
+        return redirect('/account')->with('success', 'profile has been updated');
     }
 
     /**
