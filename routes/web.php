@@ -11,6 +11,7 @@ use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\WishlistController;
+use App\Http\Controllers\PasswordResetController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +47,16 @@ Route::post('/login', [LoginController::class, 'authenticate']);
 
 // logout
 Route::post('/logout', [LoginController::class, 'logout']);
+
+// forgot password
+Route::get('/forgot-password', [PasswordResetController::class, 'index']);
+
+Route::post('/forgot-password', [PasswordResetController::class, 'mailComposer']);
+
+Route::get('/reset-password', [PasswordResetController::class, 'edit']);
+
+Route::post('/reset-password', [PasswordResetController::class, 'update']);
+
 
 // account (resource)
 Route::get('/account', [AccountController::class, 'index']);

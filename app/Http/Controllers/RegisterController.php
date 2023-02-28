@@ -16,11 +16,14 @@ class RegisterController extends Controller
 
     public function store(Request $request)
     {
+        if ($request->Password != $request->passwordConfirmation) {
+            return back()->with('error', 'password must be the same');
+        }
+
         $validatedData = $request->validate([
             'Username' => 'required|unique:users|max:255',
             'Email' => 'required|unique:users|email:dns',
             'Password' => 'required|min:6|max:255',
-            // 'PasswordConfirmation' => 'required|confirmed|min:6|max:255'
         ]);
 
         $validatedData['id'] = IdGenerator::generate([
