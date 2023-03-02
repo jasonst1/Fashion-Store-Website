@@ -2,13 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Address extends Model
+class Payment extends Model
 {
     use HasFactory;
-
     public $incrementing = false;
 
     protected $guarded = [''];
@@ -20,6 +19,6 @@ class Address extends Model
 
     public function getRouteKeyName()
     {
-        return 'Address';
+        return 'CardNumber';
     }
 }

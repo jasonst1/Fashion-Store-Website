@@ -13,21 +13,26 @@
         </div>
     </section>
 
-    <div class="album py-5 bg-light">
+    <div class="album">
         <div class="container">
-
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            <div class="row">
                 @foreach ($products as $product)
-                    <div class="col">
-                        <div class="card mb-5" style="width: 18rem;">
-                            <img class="card-img-top" src="https://source.unsplash.com/1200x400?{{ $product->CategoryID }}"
-                                {{-- BUG --}} alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ $product->ProductName }}</h5>
-                                <p class="card-text">{{ $product->ProductSummary }}</p>
-                                <a href="/catalog/show/{{ $product->ProductSlug }}" class="btn btn-primary">detail</a>
+                    <div class="col mb-5">
+                        <a href="/catalog/show/{{ $product->ProductSlug }}">
+                            <div class="card" style="width: 18rem;">
+                                <img class="card-img-top"
+                                    src="https://source.unsplash.com/1200x400?{{ $product->CategoryID }}"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ $product->ProductName }}</h5>
+                                    <p class="card-text">Rp. {{ $product->ProductPrice }}</p>
+                                    <div>
+                                        <p class="card-text">{{ $product->created_at->diffForHumans() }}</p>
+                                        <a href="#"><i class="bi bi-heart"></i></a>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 @endforeach
             </div>

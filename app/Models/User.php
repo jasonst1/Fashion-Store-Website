@@ -22,11 +22,13 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+
+    //id seharusnya guarded ?
     protected $fillable = [
         'id',
-        'username',
-        'email',
-        'password',
+        'Username',
+        'Email',
+        'Password',
     ];
     // field mana aja yang boleh diisi
     // sisanya diisi otomatis
@@ -53,5 +55,15 @@ class User extends Authenticatable
     public function getAuthPassword()
     {
         return $this->Password;
+    }
+
+    public function Address()
+    {
+        return $this->hasMany(Address::class, 'UserID');
+    }
+
+    public function Payment()
+    {
+        return $this->hasMany(Payment::class, 'UserID');
     }
 }
