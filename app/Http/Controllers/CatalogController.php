@@ -33,9 +33,4 @@ class CatalogController extends Controller
             'product' => $product
         ]);
     }
-
-    public function wishlist()
-    {
-        return view('catalog.wishlist');
-    }
 }

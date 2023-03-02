@@ -11,13 +11,20 @@ class Wishlist extends Model
     public $primarykey = ['UserID', 'ProductID'];
     public $incrementing = false;
 
-    public function Products()
+    protected $guarded = [''];
+
+    public function Product()
     {
         return $this->belongsTo(Products::class, 'ProductID', 'ProductID');
     }
 
-    public function Users()
+    public function User()
     {
-        return $this->belongsTo(User::class, 'UserID', 'UserID');
+        return $this->belongsTo(User::class, 'UserID');
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'ProductID';
     }
 }

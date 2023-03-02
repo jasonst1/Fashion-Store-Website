@@ -1,5 +1,22 @@
 @extends('catalog.layout.main')
 
+@if (session()->has('error'))
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <p>{{ session('error') }}</p>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+@endif
+@if (session()->has('success'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <p>{{ session('success') }}</p>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+@endif
+
 @section('container')
     <section class="py-5 text-center container">
         <div class="row py-lg-5">
@@ -28,7 +45,11 @@
                                     <p class="card-text">Rp. {{ $product->ProductPrice }}</p>
                                     <div>
                                         <p class="card-text">{{ $product->created_at->diffForHumans() }}</p>
-                                        <a href="#"><i class="bi bi-heart"></i></a>
+                                        <form action="/wishlist" method="POST">
+                                            @csrf
+                                            <input type="hidden" name="ProductID" value="{{ $product->ProductID }}">
+                                            <button type="submit">add</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>

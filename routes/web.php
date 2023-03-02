@@ -26,14 +26,18 @@ use App\Http\Controllers\PasswordResetController;
 
 Route::get('/', [HomeController::class, 'index'])->middleware('auth');
 
-//catalog + detail + wishlist
+//catalog + detail
 Route::get('/catalog', [CatalogController::class, 'index']);
 
 Route::get('/catalog/{CategoryName}', [Catalogcontroller::class, 'category']);
 
 Route::get('/catalog/show/{product:ProductSlug}', [CatalogController::class, 'show']);
 
-Route::get('/wishlist', [CatalogController::class, 'wishlist']);
+// Route::get('/wishlist', [CatalogController::class, 'wishlist']);
+
+// wishlist
+Route::resource('/wishlist', WishlistController::class);
+
 
 // register
 Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');

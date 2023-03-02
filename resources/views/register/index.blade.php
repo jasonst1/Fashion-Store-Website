@@ -34,7 +34,8 @@
                                             <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                                             <div class="form-outline flex-fill mb-0">
                                                 <input type="text" id="Username" class="form-control" name="Username">
-                                                <label class="form-label" for="Username">Your Name</label>
+                                                <label class="form-label" for="Username" value="{{ old('Username') }}">Your
+                                                    Name</label>
                                                 @error('Username')
                                                     {{ $message }}
                                                 @enderror
@@ -45,7 +46,8 @@
                                             <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                                             <div class="form-outline flex-fill mb-0">
                                                 <input type="email" id="Email" class="form-control" name="Email">
-                                                <label class="form-label" for="Email">Your Email</label>
+                                                <label class="form-label" for="Email" value="{{ old('Email') }}">Your
+                                                    Email</label>
                                                 @error('Email')
                                                     {{ $message }}
                                                 @enderror

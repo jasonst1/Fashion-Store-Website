@@ -102,14 +102,14 @@ class PasswordResetController extends Controller
 
     public function update(Request $request)
     {
-        if ($request->Password != $request->passwordConfirmation) {
-            return back()->with('error', 'password must be the same');
-        }
+        // if ($request->Password != $request->passwordConfirmation) {
+        //     return back()->with('error', 'password must be the same');
+        // }
 
         $user = User::where('Email', $request->email)->where('password_reset_token', $request->token)->first();
 
         $rules = [
-            'Password' => 'required|min:6|max:255',
+            'Password' => 'required|min:6|max:255|same:passwordConfirmation',
         ];
 
         $validatedData = $request->validate($rules);
