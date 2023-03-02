@@ -26,44 +26,25 @@
                             <div class="row justify-content-center">
                                 <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
 
-                                    <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Login</p>
+                                    <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Password Reset</p>
 
-                                    <form class="mx-1 mx-md-4" action="/login" method="POST">
+                                    <form class="mx-1 mx-md-4" action="/forgot-password" method="POST">
                                         @csrf
                                         <div class="d-flex flex-row align-items-center mb-4">
                                             <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                                             <div class="form-outline flex-fill mb-0">
-                                                <input type="email" id="Email" class="form-control" name="Email">
-                                                <label class="form-label" for="Email">Your Email</label>
-                                                @error('Email')
-                                                    {{ $message }}
-                                                @enderror
-                                            </div>
-                                        </div>
-
-                                        <div class="d-flex flex-row align-items-center mb-4">
-                                            <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
-                                            <div class="form-outline flex-fill mb-0">
-                                                <input type="password" id="Password" class="form-control" name="Password">
-                                                <label class="form-label" for="Password">Password</label>
-                                                @error('Password')
+                                                <input type="email" id="email" class="form-control" name="email">
+                                                <label class="form-label" for="email">Your email</label>
+                                                @error('email')
                                                     {{ $message }}
                                                 @enderror
                                             </div>
                                         </div>
 
                                         <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                                            <button type="submit" class="btn btn-primary btn-lg">Login</button>
+                                            <button type="submit" class="btn btn-primary btn-lg">Send Email</button>
                                         </div>
                                     </form>
-
-                                    <a href="/forgot-password" class="d-flex justify-content-center">Forgot password ?</a>
-                                </div>
-                                <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
-
-                                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
-                                        class="img-fluid" alt="Sample image">
-
                                 </div>
                             </div>
                         </div>
