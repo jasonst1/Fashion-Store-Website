@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Products;
+use App\Models\Categories;
+use Haruncpi\LaravelIdGenerator\IdGenerator;
 use App\Http\Requests\StoreProductsRequest;
 use App\Http\Requests\UpdateProductsRequest;
 
@@ -25,7 +27,7 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        //
+        return view("catalog.create");
     }
 
     /**
@@ -36,7 +38,28 @@ class ProductsController extends Controller
      */
     public function store(StoreProductsRequest $request)
     {
-        //
+        $rule = [
+            'ProductName' => 'required|string',
+            'ProductSummary' => 'required|string',
+            'ProductPrice' => 'required|numeric',
+            'ProductQuantity' => 'required|numeric',
+            'ProductDiscount' => 'numeric'
+        ];
+
+        $validatedData = $request->validate($rule);
+
+        // return $validatedData;
+
+        $validatedData['ProductID'] = IdGenerator::generate([
+            'table' => 'products',
+            'field' => 'ProductID',
+            'length' => 6,
+            'prefix' => 'PR'
+        ]);
+
+        Products::create($validatedData);
+
+        return redirect('/catalog');
     }
 
     /**
@@ -45,7 +68,7 @@ class ProductsController extends Controller
      * @param  \App\Models\Products  $products
      * @return \Illuminate\Http\Response
      */
-    public function show(Products $products)
+    public function show(Products $catalog)
     {
         //
     }
@@ -56,9 +79,9 @@ class ProductsController extends Controller
      * @param  \App\Models\Products  $products
      * @return \Illuminate\Http\Response
      */
-    public function edit(Products $products)
+    public function edit(Products $catalog)
     {
-        //
+        return $catalog;
     }
 
     /**
@@ -68,7 +91,7 @@ class ProductsController extends Controller
      * @param  \App\Models\Products  $products
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateProductsRequest $request, Products $products)
+    public function update(UpdateProductsRequest $request, Products $catalog)
     {
         //
     }
@@ -79,8 +102,10 @@ class ProductsController extends Controller
      * @param  \App\Models\Products  $products
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Products $products)
+    public function destroy(Products $catalog)
     {
-        //
+        Products::where('ProductID', $catalog->ProductID)->delete();
+
+        return redirect('/catalog');
     }
 }

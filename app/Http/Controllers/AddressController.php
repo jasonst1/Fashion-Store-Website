@@ -59,6 +59,8 @@ class AddressController extends Controller
 
         $validatedData = $request->validate($rule);
 
+        // return $validatedData;
+
         $validatedData['UserID'] = $id;
 
         Address::create($validatedData);

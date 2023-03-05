@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Categories;
+use Haruncpi\LaravelIdGenerator\IdGenerator;
 use App\Http\Requests\StoreCategoriesRequest;
 use App\Http\Requests\UpdateCategoriesRequest;
 
@@ -25,7 +26,7 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        //
+        return view('category.index');
     }
 
     /**
@@ -36,7 +37,22 @@ class CategoriesController extends Controller
      */
     public function store(StoreCategoriesRequest $request)
     {
-        //
+        $rule = [
+            'CategoryName' => 'required|string|unique:categories'
+        ];
+
+        $validatedData = $request->validate($rule);
+
+        $validatedData['CategoryID'] = IdGenerator::generate([
+            'table' => 'categories',
+            'field' => 'CategoryID',
+            'length' => 6,
+            'prefix' => 'CA'
+        ]);
+
+        Categories::create($validatedData);
+
+        return redirect('/catalog');
     }
 
     /**
@@ -45,7 +61,7 @@ class CategoriesController extends Controller
      * @param  \App\Models\Categories  $categories
      * @return \Illuminate\Http\Response
      */
-    public function show(Categories $categories)
+    public function show(Categories $category)
     {
         //
     }
@@ -56,9 +72,9 @@ class CategoriesController extends Controller
      * @param  \App\Models\Categories  $categories
      * @return \Illuminate\Http\Response
      */
-    public function edit(Categories $categories)
+    public function edit(Categories $category)
     {
-        //
+        return $category;
     }
 
     /**
@@ -68,7 +84,7 @@ class CategoriesController extends Controller
      * @param  \App\Models\Categories  $categories
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateCategoriesRequest $request, Categories $categories)
+    public function update(UpdateCategoriesRequest $request, Categories $category)
     {
         //
     }
@@ -79,8 +95,10 @@ class CategoriesController extends Controller
      * @param  \App\Models\Categories  $categories
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Categories $categories)
+    public function destroy(Categories $category)
     {
-        //
+        Categories::where('CategoryName', $category->CategoryName)->delete();
+
+        return redirect('/catalog');
     }
 }

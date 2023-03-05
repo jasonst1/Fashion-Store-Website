@@ -10,8 +10,15 @@ class Categories extends Model
     use HasFactory;
     public $incrementing = false;
 
+    protected $guarded = [''];
+
     public function Products()
     {
         return $this->hasMany(Products::class, 'CategoryID', 'CateogoryID');
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'CategoryName';
     }
 }

@@ -10,6 +10,8 @@ class Products extends Model
     use HasFactory;
     public $incrementing = false;
 
+    protected $guarded = [''];
+
     public function Categories()
     {
         return $this->belongsTo(Categories::class, 'CategoryID', 'CategoryID');
@@ -18,5 +20,10 @@ class Products extends Model
     public function Wishlist()
     {
         return $this->hasMany(Wishlist::class, 'ProductID', 'ProductID');
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'ProductID';
     }
 }

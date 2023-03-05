@@ -8,10 +8,12 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\CatalogController;
+use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\PasswordResetController;
+use App\Http\Controllers\ProductsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,15 +31,23 @@ Route::get('/', [HomeController::class, 'index'])->middleware('auth');
 //catalog + detail
 Route::get('/catalog', [CatalogController::class, 'index']);
 
-Route::get('/catalog/{CategoryName}', [Catalogcontroller::class, 'category']);
+// Route::get('/catalog/{CategoryName}', [Catalogcontroller::class, 'category']);
 
 Route::get('/catalog/show/{product:ProductSlug}', [CatalogController::class, 'show']);
+
+// admin product (create, update, delete)
+Route::resource('/catalog', ProductsController::class)->except(['index', 'show']);
+
+// gatau kenapa edit sama deletenya gabisa
+// Route::post('/catalog/{product}', [ProductsController::class, 'destroy']);
+
+// admin category (create, update, delete)
+Route::resource('/category', CategoriesController::class)->except(['index']);
 
 // Route::get('/wishlist', [CatalogController::class, 'wishlist']);
 
 // wishlist
 Route::resource('/wishlist', WishlistController::class);
-
 
 // register
 Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');

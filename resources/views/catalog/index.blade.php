@@ -21,10 +21,21 @@
     <section class="py-5 text-center container">
         <div class="row py-lg-5">
             <div class="col-lg-6 col-md-8 mx-auto">
+                @can('admin')
+                    <a href="/category/create">Create</a>
+                @endcan
                 <a href="/catalog" class="btn btn-secondary my-2">all</a>
                 @foreach ($categories as $category)
                     <a href="/catalog/{{ $category->CategoryName }}"
                         class="btn btn-secondary my-2">{{ $category->CategoryName }}</a>
+                    @can('admin')
+                        <a href="/category/{{ $category->CategoryName }}/edit">edit</a>
+                        <form action="/category/{{ $category->CategoryName }}" method="POST">
+                            @method('delete')
+                            @csrf
+                            <button type="submit">Delete</button>
+                        </form>
+                    @endcan
                 @endforeach
             </div>
         </div>
@@ -33,6 +44,13 @@
     <div class="album">
         <div class="container">
             <div class="row">
+                @can('admin')
+                    <a href="/catalog/create">
+                        <div class="card" style="width: 18rem;">
+                            <h1>create</h1>
+                        </div>
+                    </a>
+                @endcan
                 @foreach ($products as $product)
                     <div class="col mb-5">
                         <a href="/catalog/show/{{ $product->ProductSlug }}">
@@ -50,6 +68,14 @@
                                             <input type="hidden" name="ProductID" value="{{ $product->ProductID }}">
                                             <button type="submit">add</button>
                                         </form>
+                                        @can('admin')
+                                            <a href="/catalog/{{ $product->ProductID }}/edit">edit</a>
+                                            <form action="/catalog/{{ $product->ProductID }}" method="POST">
+                                                @method('delete')
+                                                @csrf
+                                                <button type="submit">delete</button>
+                                            </form>
+                                        @endcan
                                     </div>
                                 </div>
                             </div>
