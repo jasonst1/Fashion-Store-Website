@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Products;
 use App\Models\Categories;
-use Haruncpi\LaravelIdGenerator\IdGenerator;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StoreProductsRequest;
 use App\Http\Requests\UpdateProductsRequest;
+use App\Models\ProductPhotos;
+use Haruncpi\LaravelIdGenerator\IdGenerator;
 
 class ProductsController extends Controller
 {
@@ -38,12 +40,14 @@ class ProductsController extends Controller
      */
     public function store(StoreProductsRequest $request)
     {
+        // text
         $rule = [
             'ProductName' => 'required|string',
             'ProductSummary' => 'required|string',
             'ProductPrice' => 'required|numeric',
             'ProductQuantity' => 'required|numeric',
-            'ProductDiscount' => 'numeric'
+            'ProductDiscount' => 'numeric',
+            'ProductPhotos.*' => 'image|file|max:1024|nullable'
         ];
 
         $validatedData = $request->validate($rule);
@@ -58,6 +62,31 @@ class ProductsController extends Controller
         ]);
 
         Products::create($validatedData);
+
+        //image
+
+        if ($request->hasFile('ProductPhotos')) {
+
+            $ProductPhotos = $request->file('ProductPhotos');
+
+            foreach ($ProductPhotos as $ProductPhoto) {
+                $path = $ProductPhoto->store('product_photos');
+
+                ProductPhotos::create([
+                    'ProductID' => $validatedData['ProductID'],
+                    'Image' => $path
+                ]);
+
+                // gw kira kan selama ini kalo mau masukkin data ke database harus pake $validatedData 
+                // ternyata ga pake itu juga bisa asalkan formatnya sama associative array 
+                // terus elemen di array itu harus punya key yang sama sama field di tablenya biar bisa dimasukkin
+            }
+
+            // $validatedData['Image'] = $request->file('ProductPhotos')->store('product_photos');
+        }
+
+        // jadi bisa pake $validaedData juga, kalo fieldnya gaada ya ga dimasukkin
+        // ProductPhotos::create($validatedData);
 
         return redirect('/catalog');
     }
@@ -104,7 +133,22 @@ class ProductsController extends Controller
      */
     public function destroy(Products $catalog)
     {
+        // jadi kalo pake 2 table buat 1 data harus create dan delete di dua2nya
+
+        $ProductPhotos = ProductPhotos::where('ProductID', $catalog->ProductID)->first();
+
+        if ($ProductPhotos) {
+            if ($ProductPhotos->Image) {
+                Storage::delete($ProductPhotos->Image);
+            }
+        }
+
+        // if ($catalog->ProductPhotos->Image) {
+        //     Storage::delete($catalog->ProductPhotos->Image);
+        // }
+
         Products::where('ProductID', $catalog->ProductID)->delete();
+        ProductPhotos::where('ProductID', $catalog->ProductID)->delete();
 
         return redirect('/catalog');
     }

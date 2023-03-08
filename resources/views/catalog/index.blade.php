@@ -29,12 +29,16 @@
                     <a href="/catalog/{{ $category->CategoryName }}"
                         class="btn btn-secondary my-2">{{ $category->CategoryName }}</a>
                     @can('admin')
-                        <a href="/category/{{ $category->CategoryName }}/edit">edit</a>
-                        <form action="/category/{{ $category->CategoryName }}" method="POST">
-                            @method('delete')
-                            @csrf
-                            <button type="submit">Delete</button>
-                        </form>
+                        <div>
+                            <a href="/category/{{ $category->CategoryName }}/edit">edit</a>
+                        </div>
+                        <div>
+                            <form action="/category/{{ $category->CategoryName }}" method="POST">
+                                @method('delete')
+                                @csrf
+                                <button type="submit">Delete</button>
+                            </form>
+                        </div>
                     @endcan
                 @endforeach
             </div>

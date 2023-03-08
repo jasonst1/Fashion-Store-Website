@@ -39,6 +39,14 @@
                     {{ $message }}
                 @enderror
             </div>
+            <div class="form-group">
+                <label for="ProductPhotos">Product photos</label>
+                <input type="file" class="form-control" id="ProductPhotos" placeholder="" name="ProductPhotos[]"
+                    multiple>
+                @error('ProductPhotos')
+                    {{ $message }}
+                @enderror
+            </div>
             <button type="submit" class="btn btn-success btn-lg btn-block my-5">Save</button>
         </form>
     </div>
