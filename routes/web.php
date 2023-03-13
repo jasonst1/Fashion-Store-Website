@@ -14,6 +14,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\PasswordResetController;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\ReviewController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,7 +34,7 @@ Route::get('/catalog', [CatalogController::class, 'index']);
 
 // Route::get('/catalog/{CategoryName}', [Catalogcontroller::class, 'category']);
 
-Route::get('/catalog/show/{product:ProductSlug}', [CatalogController::class, 'show']);
+Route::get('/catalog/show/{product:ProductName}', [CatalogController::class, 'show']);
 
 // admin product (create, update, delete)
 Route::resource('/catalog', ProductsController::class)->except(['index', 'show']);
@@ -43,6 +44,9 @@ Route::resource('/catalog', ProductsController::class)->except(['index', 'show']
 
 // admin category (create, update, delete)
 Route::resource('/category', CategoriesController::class)->except(['index']);
+
+// review comment
+Route::resource('/review', ReviewController::class);
 
 // Route::get('/wishlist', [CatalogController::class, 'wishlist']);
 

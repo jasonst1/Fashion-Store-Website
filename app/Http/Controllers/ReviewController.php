@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Review;
 use Illuminate\Http\Request;
+use Haruncpi\LaravelIdGenerator\IdGenerator;
 
 class ReviewController extends Controller
 {
@@ -35,7 +36,27 @@ class ReviewController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $id = auth()->user()->id;
+
+        $rules = [
+            'Comment' => 'required'
+        ];
+
+        $validatedData = $request->validate($rules);
+
+        $validatedData['ReviewID'] = IdGenerator::generate([
+            'table' => 'reviews',
+            'field' => 'ReviewID',
+            'length' => 6,
+            'prefix' => 'RE'
+        ]);
+
+        $validatedData['ProductID'] = $request->ProductID;
+        $validatedData['UserID'] = $id;
+
+        Review::create($validatedData);
+
+        return back();
     }
 
     /**
@@ -80,6 +101,8 @@ class ReviewController extends Controller
      */
     public function destroy(Review $review)
     {
-        //
+        Review::where('ReviewID', $review->ReviewID)->delete();
+
+        return back();
     }
 }

@@ -27,6 +27,11 @@ class Products extends Model
         return $this->hasMany(ProductPhotos::class, 'ProductID', 'ProductID');
     }
 
+    public function Review()
+    {
+        return $this->hasMany(Review::class, 'ProductID', 'ProductID');
+    }
+
     public function getRouteKeyName()
     {
         return 'ProductID';

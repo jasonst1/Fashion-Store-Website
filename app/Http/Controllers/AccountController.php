@@ -82,6 +82,10 @@ class AccountController extends Controller
             'ProfileImage' => 'image|file|max:1024|nullable'
         ];
 
+        // khusus buat input file type, bisa validasi pake laravel 
+        // tapi meskipun lolos validasi key dan value dari input file typenya gabakal masuk ke associative array 
+        // jadinya buat file harus dimasukkin manual 
+
         $validatedData = $request->validate($rules);
 
         if ($request->file('ProfileImage')) {

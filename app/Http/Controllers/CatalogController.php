@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Categories;
 use App\Models\Category;
 use App\Models\Products;
+use App\Models\Review;
 use Illuminate\Http\Request;
 
 class CatalogController extends Controller
@@ -31,7 +32,8 @@ class CatalogController extends Controller
     public function show(Products $product)
     {
         return view('catalog.show', [
-            'product' => $product
+            'product' => $product,
+            'reviews' => Review::where('ProductID', $product->ProductID)->get()
         ]);
     }
 }

@@ -18,8 +18,10 @@ class CreateReviewsTable extends Migration
             $table->string('UserID');
             $table->string('ProductID');
             $table->string('Comment');
-            $table->primary(['ReviewID']);
             $table->timestamps();
+            $table->primary(['ReviewID']);
+            $table->foreign('UserID')->references('id')->on('users');
+            $table->foreign('ProductID')->references('ProductID')->on('products');
         });
     }
 

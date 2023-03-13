@@ -57,10 +57,10 @@
                 @endcan
                 @foreach ($products as $product)
                     <div class="col mb-5">
-                        <a href="/catalog/show/{{ $product->ProductSlug }}">
+                        <a href="/catalog/show/{{ $product->ProductName }}">
                             <div class="card" style="width: 18rem;">
                                 <img class="card-img-top"
-                                    src="https://source.unsplash.com/1200x400?{{ $product->CategoryID }}"
+                                    src="https://source.unsplash.com/1200x400?{{ $product->CategoryName }}"
                                     alt="Card image cap">
                                 <div class="card-body">
                                     <h5 class="card-title">{{ $product->ProductName }}</h5>
